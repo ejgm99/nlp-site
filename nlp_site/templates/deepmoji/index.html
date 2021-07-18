@@ -1,0 +1,37 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<form action="/deepmoji/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+
+
+{% if emoji_json %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Tweet</th>
+      <th scope="col">Trained Words</th>
+      <th scope="col">Prediction</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for emoji in emoji_json %}
+  <tr>
+    <td> {{ emoji.phrases }} </td>
+    <td>
+      {% for label in emoji.labels %}
+        {{ label }}
+      {% endfor %}
+    </td>
+    <td> {{ emoji.scores }}</td>
+  </tr>
+      <!-- <li><a> {{ tweet.phrases }} | {{ tweet.trained_words }} | {{ tweet.output }} </a></li> -->
+  {% endfor %}
+</tbody>
+</table>
+{% endif %}
