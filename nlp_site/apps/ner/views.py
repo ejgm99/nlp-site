@@ -13,19 +13,12 @@ def index(request):
 def nerHandler(request):
     topic = request.POST.get('topic')
     tweets = t.getTopic(topic,5)
-    print(tweets)
     ner = requestPrediction(tweets,'st')
     ner_json = json.loads(ner)
-    ner_json = [json.loads(n) for n in ner_json]
-    print(ner_json)
     for doc in ner_json:
         for token in doc:
-            print(type(token))
-            print(token["score"])
             token["score"] = [ emoji.emojize(score , use_aliases = True) for score in token["score"] ]
     payload = combineStringsWithProcessedData(tweets,ner_json)
-    # [emoji.emojize( data["processed"]["score"], use_aliases = True)  for data in payload]
-    print(payload)
     return payload
 
 def combineStringsWithProcessedData(strings, data):
