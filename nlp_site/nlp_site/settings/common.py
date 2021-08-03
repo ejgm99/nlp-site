@@ -13,17 +13,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-print(BASE_DIR)
+print("Using base directory: ",BASE_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^lna8_8r3dmybvvb(kg!k5(y=juow&06&_lfy*l27)e6c2#=fc'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -69,8 +64,8 @@ TEMPLATES = [
 
 
 
-
-
+print(BASE_DIR)
+print(TEMPLATES[0]['DIRS'])
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
