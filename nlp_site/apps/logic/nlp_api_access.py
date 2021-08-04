@@ -22,5 +22,5 @@ def requestPrediction(data_strings,nlp_model_id):
 
 def requestStringPredictions(data_strings):
     data = createGetParameters(data_strings)
-    r = requests.get('http://localhost:8001/nlp/',params = data);
+    r = requests.get(aws,params = data);
     return r.text;
